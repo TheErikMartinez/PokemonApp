@@ -1,0 +1,40 @@
+
+
+* {
+  margin: 0;
+}
+
+.navbar{
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #ef5350;
+}
+
+.navbar h1 {
+  padding-left: 10%;
+}
+
+.navbar .buttons{
+  margin-left: auto;
+  padding-right: 10%;
+}
+
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+}
+
+.search{
+  padding: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  margin: 40px auto;
+  padding: 20px;
+}
