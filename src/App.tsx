@@ -12,7 +12,7 @@ function App() {
         <Searchbar />
         </div>
         <div className= 'content'>
-         <Pagecontent />
+         { <Pagecontent /> }
         </div>
       </div>
     </>
