@@ -1,22 +1,17 @@
-import Navbar from "./Navbar"
-import Searchbar from './Searchbar'
-import Pagecontent from "./Pagecontent";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Search from "./pages/Search";
+import Favorites from "./pages/Favorites";
 
 
 function App() {
   return (
-    <>
-      <div className='App'>
-        <Navbar />
-        <div className='search'> 
-        <Searchbar />
-        </div>
-        <div className= 'content'>
-        <Pagecontent />
-        </div>
-      </div>
-    </>
-  )
+      <Router>
+          <Routes>
+              <Route path="/" element={<Search />} />
+              <Route path="/favorites" element={<Favorites />} />
+          </Routes>
+      </Router>
+  );
 }
 
-export default App
+export default App;
