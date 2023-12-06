@@ -1,34 +1,36 @@
-import {Dispatch, ReactNode, SetStateAction, createContext, useState} from 'react';
+import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react';
 
-interface PokemonInterface {
+export interface PokemonInterface {
     name: string,
-    setName: Dispatch<SetStateAction<string>>,
     type: string,
-    setType: Dispatch<SetStateAction<string>>, 
-    sprite: string,
-    setSprite: Dispatch<SetStateAction<string>>,
+    sprite: string
 }
 
-const defaultState = {
-    name: '',
-    type: '',
-    sprite: ''
-} as PokemonInterface
+interface pokemonContextInterface {
+    pokemon: PokemonInterface
+    setPokemon: Dispatch<SetStateAction<PokemonInterface>>
+}
 
-export const PokemonContext = createContext(defaultState);
+const defaultState: pokemonContextInterface = {
+    pokemon: {name: "", type: "", sprite: ""},
+    setPokemon:() => null
+} as pokemonContextInterface
+
+export const PokemonContext = createContext<pokemonContextInterface>(defaultState)
 
 type ProviderProps = {
-    children: ReactNode
+    children:ReactNode
 }
 
-export const PokemonContextProvider = ({children}: ProviderProps) => {
-    const [name, setName] = useState<string>('');
-    const [type, setType] = useState<string>('');
-    const [sprite, setSprite] = useState<string>('');
-
+export function PokemonContextProvider({children}:ProviderProps){
+    const [pokemon, setPokemon]=useState<PokemonInterface>({name: "", type: "", sprite: ""});
     return(
-        <PokemonContext.Provider value={{name, setName, type, setType, sprite, setSprite}}>
+        <PokemonContext.Provider value={{pokemon, setPokemon}}>
             {children}
         </PokemonContext.Provider>
+
     )
 }
+
+
+

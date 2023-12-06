@@ -2,8 +2,8 @@ import Navbar from "./Navbar"
 import Searchbar from './Searchbar'
 import Pagecontent from "./Pagecontent";
 
-function App() {
 
+function App() {
   return (
     <>
       <div className='App'>
@@ -12,7 +12,7 @@ function App() {
         <Searchbar />
         </div>
         <div className= 'content'>
-         { <Pagecontent /> }
+        <Pagecontent />
         </div>
       </div>
     </>

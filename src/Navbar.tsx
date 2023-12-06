@@ -1,4 +1,5 @@
 const Navbar = () => {
+    
     return ( 
        <nav className="navbar">
         <h1><img style={{ width: 110, height: 70 }} src="images\Pokemon-Logo.png" /></h1>

@@ -1,56 +1,41 @@
-import {useEffect, useState, useContext} from "react";
-import { Button, Input } from '@ui5/webcomponents-react';
+import {useState, useContext} from "react";
+import { Button, Input } from "@ui5/webcomponents-react";
 import axios from "axios";
 import { PokemonContext } from "./PokemonContext";
 
 const Searchbar = () => {
-    const [input, setInput] = useState('')
-    // const [name, setName] = useState('')
-    // const [type, setType] = useState('')
-    // const [sprite, setSprite] = useState('')
-    const {setName, setType, setSprite} = useContext(PokemonContext)
-    const {name, type, sprite} = useContext(PokemonContext)
+    const [pokemonName, setPokemonName] = useState("")
+    const {setPokemon} = useContext(PokemonContext);
 
-     const getPokemon = () => {
-      axios.get('https://pokeapi.co/api/v2/pokemon/' + input.toLowerCase()).then((res)=>console.log( res.data.name, res.data.types["0"].type.name, res.data.sprites.other["official-artwork"].front_default))
-       
-        
-          console.log(name)
-          console.log(type)
-          console.log(sprite)
-     }
-
-     async function fetch() {
+     async function getPokemon() {
       try {
-        const res = await axios.get('https://pokeapi.co/api/v2/pokemon/' + input.toLowerCase());
+        const res = await axios.get('https://pokeapi.co/api/v2/pokemon/' + pokemonName.toLowerCase())
 
-        setName(res.data.name);
-        setType(res.data.types["0"].type.name);
-        setSprite(res.data.sprites.other["official-artwork"].front_default);
+        setPokemon({name: res.data.name.charAt(0).toUpperCase()+res.data.name.slice(1),
+                    type: res.data.types["0"].type.name.charAt(0).toUpperCase()+res.data.types["0"].type.name.slice(1),
+                    sprite: res.data.sprites.other["official-artwork"].front_default})
+                    console.log(res) // Console log, delete for task pres
       } catch {
-        setName("");
-        setType("");
-        setSprite("");
+        setPokemon({name: "A Pokémon nem található",
+                    type: "Keress rá egy Pokémonra a kereső segítségével",
+                    sprite: "images/Pokemon-not-found.png"})
       }
     }
 
-    const handleChange = (value: any) => {
-        setInput(value);
+    const handleChange = (value: string) => {
+      console.log(value) // Console log, delete for task pres
+        setPokemonName(value);
       };
 
-     useEffect(() => {
-        // axios.get('https://pokeapi.co/api/v2/pokemon/' + input.toLowerCase())
-        // .then((res) => { setName(res.data.name), setType(res.data.types["0"].type.name), setSprite(res.data.sprites.other["official-artwork"].front_default) })
-
-        fetch()
-       }, [input]);
-
     return ( 
-    <div className="input-wrapper">
-       <Input
-  onChange={(e) => handleChange(e.target.value)}
-/>
-        <Button icon="search" onClick={() => getPokemon()} />
+      <div>
+        <div className="input-wrapper">
+          <Input 
+            onInput={(e) => handleChange(e.target.value!)}
+            onChange={() => getPokemon()} //Enternel mukodik
+          />
+          <Button icon="search" onClick={() => getPokemon()} />
+      </div>
     </div>);
 }
  

@@ -1,13 +1,14 @@
-import {useContext} from 'react'
-import { PokemonContext } from './PokemonContext';
+import { PokemonContext } from "./PokemonContext"
+import {useContext} from "react";
 
 
 const Pagecontent = () => {
-    const {name, type, sprite} = useContext(PokemonContext)
+    const {pokemon} = useContext(PokemonContext);
     return (
         <div className="page-content">
-            <h2> {PokemonContext.Provider.name} </h2>
-            <a href=""><img style={{ width: 40, height: 40 }} src = {sprite} /></a>
+            <h2>{pokemon.name}</h2>
+            <p>{pokemon.type}</p>
+            <a><img src = {pokemon.sprite} /></a>
         </div>
       );
 }
