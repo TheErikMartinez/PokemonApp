@@ -72,3 +72,24 @@
   align-items: center;
   justify-content: center;
 }
+
+.favoritePokes{
+  box-shadow: 2px 2px 5px gray;
+}
+
+.favorites h1 {
+  font-size: 3vw;
+  font-family: "Helvetica";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorites p {
+  font-size: 2vw;
+  font-family: "Helvetica";
+  color: dimgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,26 +1,27 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { PokemonContext } from "./PokemonContext";
+import { Grid } from "@ui5/webcomponents-react";
+import React from "react";
 
 const FavoritePokemons = () => {
-    //const {pokemon, setPokemon} = useContext(PokemonContext);
-    const allKeys = Object.keys(localStorage);
-    //const [favorites, setFavorites] = useState([]);
-
-    function DisplayFave(){
-     //     console.log(pokemon.name)
-     //     localStorage.setItem(pokemon.name, JSON.stringify(pokemon));
-     //     console.log(JSON.parse(localStorage.getItem(pokemon.name)!))
-     allKeys.forEach((key) => {
-      //setPokemon()
-      console.log(JSON.parse(localStorage.getItem(key)!))
-    })
-
-    }
+    const {favePokemons} = useContext(PokemonContext);
+    const listFavorites = favePokemons.map((favePok) => <div className="favoritePokes"
+  > 
+    <h1>{favePok.name}</h1>
+    <p>{favePok.type}</p>
+    <img src = {favePok.sprite} />
+  </div>)
     
     return ( 
-        <div>  
-        <ul> { allKeys.map(key => <li> {localStorage.getItem(key)} </li>) }</ul>
-       </div>
+      <Grid
+  className=""
+  defaultSpan="XL3 L3 M2 S4"
+  position="Center"
+>
+  <React.Fragment key=".0">
+    {listFavorites}
+  </React.Fragment>
+</Grid>
      );
 }
  

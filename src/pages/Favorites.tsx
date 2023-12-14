@@ -7,7 +7,7 @@ function Favorites() {
       <>
         <div className="App">
           <Navbar />
-          <div className="Favorites">
+          <div className="favorites">
           <FavoritePokemons />
           </div>
         </div>
