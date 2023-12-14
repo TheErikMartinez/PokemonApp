@@ -15,9 +15,9 @@ const Searchbar = () => {
                     type: res.data.types["0"].type.name.charAt(0).toUpperCase()+res.data.types["0"].type.name.slice(1),
                     sprite: res.data.sprites.other["official-artwork"].front_default})
       } catch {
-        setPokemon({name: "A Pokémon nem található",
-                    type: "Keress rá egy Pokémonra a kereső segítségével",
-                    sprite: "images/Pokemon-not-found.png"})
+        setPokemon({name: undefined,
+                    type: undefined,
+                    sprite: undefined})
       }
     }
 

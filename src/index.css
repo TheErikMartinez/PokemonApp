@@ -60,4 +60,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+}
+.content .photo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pokemonName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
