@@ -2,6 +2,7 @@
 
 * {
   margin: 0;
+  max-width: 100%;
 }
 
 .navbar{
@@ -28,13 +29,67 @@
 }
 
 .search{
-  padding: 5%;
+  padding: 3% ;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .content {
-  margin: 40px auto;
-  padding: 20px;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content h2{
+  font-size: 5.5vw;
+  font-family: "Helvetica";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content p{
+  font-size: 2.5vw;
+  font-family: "Helvetica";
+  color: dimgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.content .photo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pokemonName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favoritePokes{
+  box-shadow: 2px 2px 5px gray;
+}
+
+.favorites h1 {
+  font-size: 3vw;
+  font-family: "Helvetica";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorites p {
+  font-size: 2vw;
+  font-family: "Helvetica";
+  color: dimgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

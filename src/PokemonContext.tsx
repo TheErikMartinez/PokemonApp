@@ -1,34 +1,41 @@
-import {Dispatch, ReactNode, SetStateAction, createContext, useState} from 'react';
+import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react';
 
-interface PokemonInterface {
-    name: string,
-    setName: Dispatch<SetStateAction<string>>,
-    type: string,
-    setType: Dispatch<SetStateAction<string>>, 
-    sprite: string,
-    setSprite: Dispatch<SetStateAction<string>>,
+export interface PokemonInterface {
+    name: string | undefined,
+    type: string | undefined,
+    sprite: string | undefined
 }
 
-const defaultState = {
-    name: '',
-    type: '',
-    sprite: ''
-} as PokemonInterface
+interface pokemonContextInterface {
+    pokemon: PokemonInterface
+    setPokemon: Dispatch<SetStateAction<PokemonInterface>>
+    favePokemons: PokemonInterface[]
+    setFavePokemons: Dispatch<SetStateAction<PokemonInterface[]>>
+}
 
-export const PokemonContext = createContext(defaultState);
+const defaultState: pokemonContextInterface = {
+    pokemon: {name: " ", type: " ", sprite: " "},
+    setPokemon:() => null,
+    favePokemons: [],
+    setFavePokemons:() => null
+} as pokemonContextInterface
+
+export const PokemonContext = createContext<pokemonContextInterface>(defaultState)
 
 type ProviderProps = {
-    children: ReactNode
+    children:ReactNode
 }
 
-export const PokemonContextProvider = ({children}: ProviderProps) => {
-    const [name, setName] = useState<string>('');
-    const [type, setType] = useState<string>('');
-    const [sprite, setSprite] = useState<string>('');
-
+export function PokemonContextProvider({children}:ProviderProps){
+    const [pokemon, setPokemon]=useState<PokemonInterface>({name: " ", type: " ", sprite: " "});
+    const [favePokemons, setFavePokemons]=useState<PokemonInterface[]>([]);
     return(
-        <PokemonContext.Provider value={{name, setName, type, setType, sprite, setSprite}}>
+        <PokemonContext.Provider value={{pokemon, setPokemon, favePokemons, setFavePokemons}}>
             {children}
         </PokemonContext.Provider>
+
     )
 }
+
+
+
