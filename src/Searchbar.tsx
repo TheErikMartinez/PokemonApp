@@ -30,7 +30,7 @@ const Searchbar = () => {
         <div className="input-wrapper">
           <Input 
             onInput={(e) => handleChange(e.target.value!)}
-            onChange={() => getPokemon()} //Enternel mukodik
+            onChange={() => getPokemon()}
           />
           <Button icon="search" onClick={() => getPokemon()} />
       </div>
